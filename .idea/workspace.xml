@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+            <state relative-caret-position="515">
+              <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding>
                 <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -106,8 +106,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="219" />
-    <option name="y" value="23" />
+    <option name="x" value="900" />
+    <option name="y" value="58" />
     <option name="width" value="1661" />
     <option name="height" value="1044" />
   </component>
@@ -202,15 +202,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586256909292</updated>
-      <workItem from="1586256925429" duration="12418000" />
+      <workItem from="1586256925429" duration="12748000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12418000" />
+    <option name="totallyTimeSpent" value="12748000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="219" y="23" width="1661" height="1044" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1692692" />
@@ -219,11 +220,11 @@
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" weight="0.20989011" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.17912088" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32747254" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32747254" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -301,8 +302,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+        <state relative-caret-position="515">
+          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding>
             <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
