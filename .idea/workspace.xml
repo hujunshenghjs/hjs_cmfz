@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff87372e-0e44-4297-84b7-34083a655ed8" name="Default Changelist" comment="" />
+    <list default="true" id="ff87372e-0e44-4297-84b7-34083a655ed8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,8 +110,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="965" />
-    <option name="y" value="15" />
+    <option name="x" value="1134" />
+    <option name="y" value="41" />
     <option name="width" value="1661" />
     <option name="height" value="1044" />
   </component>
@@ -129,22 +131,7 @@
             <path>
               <item name="hjs_cmfz" type="b2602c69:ProjectViewProjectNode" />
               <item name="hjs_cmfz" type="462c0819:PsiDirectoryNode" />
-              <item name="hjs_cmfz" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hjs_cmfz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hjs_cmfz" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hjs_cmfz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hjs_cmfz" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hjs_cmfz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hjs_cmfz" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -219,15 +206,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586256909292</updated>
-      <workItem from="1586256925429" duration="9376000" />
+      <workItem from="1586256925429" duration="10475000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9376000" />
+    <option name="totallyTimeSpent" value="10475000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="965" y="15" width="1661" height="1044" extended-state="0" />
+    <frame x="1134" y="41" width="1661" height="1044" extended-state="0" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1692692" />
