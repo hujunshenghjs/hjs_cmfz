@@ -32,8 +32,8 @@ def get_code(request):
         print(code)
         yun = yunpian(settings.APIKEY)
         # yun.send_message(mobile, code)
-        redis.set(f"{mobile}_1", code, 1)
-        redis.set(f"{mobile}_2", code, 1)
+        redis.set(f"{mobile}_1", code, 60)
+        redis.set(f"{mobile}_2", code, 60)
         return JsonResponse({'status': 1, 'msg': '发送成功!'})
     else:
         return JsonResponse({'status': 0, 'msg': '请输入合法的手机号！'})
