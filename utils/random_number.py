@@ -8,4 +8,5 @@ def random_num():
     for i in b:
         c += str(i)
     return c
+
 random_num()
