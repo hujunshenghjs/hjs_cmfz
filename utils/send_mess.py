@@ -1,6 +1,8 @@
 import requests
+from utils import random_number
 
-
+d = random_number.random_num()
+print(d)
 class yunpian(object):
 
     def __init__(self, api_key):
@@ -18,6 +20,7 @@ class yunpian(object):
         print(req)
 
 
+
 if __name__ == '__main__':
     y = yunpian("22cde034573b83d38c8541908c501bdc")
-    y.send_message("17641525210", "123456")
+    y.send_message("17641525210", "{}".format(d))
