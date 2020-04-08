@@ -12,7 +12,12 @@ class yunpian(object):
         parmas = {
             'apikey': self.api_key,
             'mobile': phone,
-            'text': "【胡俊生test】您的验证码是#code#".format(code=code)
+            'text': "【胡俊生test】您的验证码是{code}".format(code=code)
         }
         req = requests.post(self.single_send_url, data=parmas)
         print(req)
+
+
+if __name__ == '__main__':
+    y = yunpian("22cde034573b83d38c8541908c501bdc")
+    y.send_message("17641525210", "123456")
