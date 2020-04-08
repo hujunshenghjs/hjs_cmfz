@@ -1,4 +1,5 @@
 import requests
+from hjs_cmfz import settings
 from utils import random_number
 
 d = random_number.random_num()
@@ -16,14 +17,15 @@ class yunpian(object):
         parmas = {
             'apikey': self.api_key,
             'mobile': phone,
-            'text': "【胡俊生test】您的验证码是{code}".format(code=code)
+            'text': "【毛信宇test】您的验证码是{code}。如非本人操作，请忽略本短信".format(code=code)
         }
         req = requests.post(self.single_send_url, data=parmas)
         print(req)
 
 
 if __name__ == '__main__':
-    y = yunpian("40d6180426417bfc57d0744a362dc108")
+    y = yunpian(settings.APIKEY)
     # y = yunpian("22cde034573b83d38c8541908c501bdc")
     # y = yunpian("041b4d9baa96c652275b632afe1619aa")
-    y.send_message("17641525210", "{}".format(d))
+    # y = yunpian("40d6180426417bfc57d0744a362dc108")
+    y.send_message("17641525210", '{}').format(d)
