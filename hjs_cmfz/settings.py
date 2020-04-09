@@ -120,9 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), os.path.join(BASE_DIR, 'media')]
+MEDIA_ROOT = [os.path.join(BASE_DIR, 'media')]
 APIKEY = "40d6180426417bfc57d0744a362dc108"
 # APIKEY = "22cde034573b83d38c8541908c501bdc"
 # APIKEY = "22cde034573b83d38c8541908c501bdc"
-APPEND_SLASH=False
+# APPEND_SLASH=False

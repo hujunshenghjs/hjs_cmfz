@@ -13,8 +13,8 @@ def get_all_banner(request):
     rows = request.GET.get('rows')
     page = request.GET.get('page', 1)
     pagtor = Paginator(banner_list, per_page=rows)  # 分页器对象
-    xxx = list(pagtor.page_range)
-    if int(page) not in xxx:
+    q = list(pagtor.page_range)
+    if int(page) not in q:
         page = 1
     all_page = Paginator(banner_list, rows)
     # 获取分页后第一页的对象
@@ -46,11 +46,9 @@ def add_banner(request):
     title = request.POST.get("title")
     status = request.POST.get('status')
     picture = request.FILES.get('pic')
-    ext_name = os.path.splitext(picture.name)[1]
-    picture.name = str(uuid.uuid4()) + ext_name
-    print(status)
+    print(title, status, picture, "111111")
     try:
-        result = Banner.objects.create(picture_title=title, picture_status=int(status), picture_url=picture)
+        result = Banner.objects.create(picture_title=title, picture_status=str(status), picture_url=picture)
         if result:
             return HttpResponse('添加成功！')
     except BaseException as error :

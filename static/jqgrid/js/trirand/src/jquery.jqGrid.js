@@ -19412,7 +19412,7 @@
                     });
                 }
                 dragging = null;
-            }).not('a[href], img').on('selectstart.h5s', function () {
+            }).not('a[href], pictures').on('selectstart.h5s', function () {
                 this.dragDrop && this.dragDrop();
                 return false;
             }).end().add([this, placeholder]).on('dragover.h5s dragenter.h5s drop.h5s', function (e) {

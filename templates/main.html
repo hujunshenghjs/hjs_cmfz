@@ -4,17 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
-    <!--先引入bootstrap的css-->
     <link rel="stylesheet" href="{% static 'boot/css/bootstrap.min.css' %}">
-    <!--bootstrap整合jqgrid样式-->
+    <link rel="stylesheet" href="{% static 'boot/css/back.css' %}">
     <link rel="stylesheet" href="{% static 'jqgrid/css/trirand/ui.jqgrid-bootstrap.css' %}">
-    <!--引入jquery-->
+    <link rel="stylesheet" href="{% static 'jqgrid/css/jquery-ui.css' %}">
     <script src="{% static 'boot/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'boot/js/bootstrap.min.js' %}"></script>
-    <!--引入jqgrid相关的js-->
+    <script src="{% static 'jqgrid/js/trirand/src/jquery.jqGrid.js' %}"></script>
     <script src="{% static 'jqgrid/js/trirand/i18n/grid.locale-cn.js' %}"></script>
-    <!--整合后的js-->
-    <script src="{% static 'jqgrid/js/trirand/jquery.jqGrid.min.js' %}"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">

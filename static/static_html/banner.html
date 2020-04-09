@@ -16,14 +16,14 @@
                 {name: "date"},
                 {name: "status"},
                 {       // 获取图片保存在数据库的路径
-                    name: "pic", formatter: function (cellvalue) {
-                    return "<img style='height: 90px;width: 90px' src='/static/" + cellValue + " '/>"                    }
+                    name: "pic", formatter: function (cellvalue, options, row) {
+                    console.log(cellvalue);
+                    return "<img style='height: 90px;width: 90px' src='/static/"+cellvalue+"' >"                   }
                 },
                 {
                     name: 'option', align: 'center', width: 439,
                     formatter: function (cellValue, options, row) {
-                        return "<button class=\"btn btn-primary\" data-aa=\"@456\" data-whatever=\"@123\" id=\"btn\" data-toggle=\"modal\" data-target=\"#bannerModal\"><span class=\"glyphicon glyphicon-edit\"></span> 添加</button> " +
-                            "<button class=\"btn btn-warning\" id=\"edit\" onclick=\"edit(" + row.id + ")\"><span class=\"glyphicon glyphicon-edit\"></span> 修改</button> " +
+                        return"<button class=\"btn btn-warning\" id=\"edit\" onclick=\"edit(" + row.id + ")\"><span class=\"glyphicon glyphicon-edit\"></span> 修改</button> " +
                             "<button class=\"btn btn-danger\" id=\"edit\" onclick=\"del(" + row.id + ")\"><span class=\"glyphicon glyphicon-edit\"></span> 删除</button>"
                     },
                 }
@@ -36,19 +36,20 @@
         $("#save").click(function () {
 
             // 通过formdata获取文件的值
-            var title = $("#upload_title").val();
-            var status = $("#upload_status").val();
-            var pic = $("#upload_pic")[0].files[0];
+            let title = $("#upload_title").val();
+            let status = $("#upload_status").val();
+            let pic = $("#upload_pic")[0].files[0];
 
-            var formData = new FormData();
+            let formData = new FormData();
             formData.append("title", title);
             formData.append("status", status);
             formData.append("pic", pic);
+            console.log(formData);
 
             $.ajax({
                 url: "/banner/add_banner/",
                 type: "post",
-                data: FormData,
+                data: formData,
                 processData: false,     // 使数据不做处理
                 contentType: false,     // 不设置请求头
                 success: function () {
@@ -132,9 +133,9 @@
                         <div class="form-group ">
                             <label class="col-sm-2 control-label">状态：</label>
                             <div class="col-sm-10">
-                                <select name="status">请选择文件状态
-                                    <option value="1" selected="selected">True</option>
-                                    <option value="2" >False</option>
+                                <select name="status" id="upload_status" class="selectpicker show-tick form-control">请选择文件状态
+                                    <option value="1" selected="selected" >True</option>
+                                    <option value="0" >False</option>
                                 </select>
 
                             </div>
