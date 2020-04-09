@@ -5,10 +5,12 @@
             datatype: 'json',
             styleUI: "Bootstrap",
             autowidth: true,
+            cellEdit: true,
             pager: "#bannerPagerNew",
             rowNum: 2,
             rowList: [2, 5, 10],
             viewrecords: true,
+            editurl: "/banner/edit_banner/",
             colNames: ["ID", "描述", "上传时间", "是否显示", "图片", "操作"],
             colModel: [
                 {name: "id"},
@@ -18,7 +20,7 @@
                 {       // 获取图片保存在数据库的路径
                     name: "pic", formatter: function (cellvalue, options, row) {
                     console.log(cellvalue);
-                    return "<img style='height: 90px;width: 90px' src='/static/"+cellvalue+"' >"                   }
+                    return "<img style='height: 90px;width: 120px' src='/static/"+cellvalue+"' >"                   }
                 },
                 {
                     name: 'option', align: 'center', width: 439,
@@ -39,7 +41,7 @@
             let title = $("#upload_title").val();
             let status = $("#upload_status").val();
             let pic = $("#upload_pic")[0].files[0];
-
+            console.log(title, status, pic);
             let formData = new FormData();
             formData.append("title", title);
             formData.append("status", status);
@@ -85,8 +87,6 @@
     <button class="btn btn-primary" data-aa="@456" data-whatever="@123" id="btn" data-toggle="modal"
             data-target="#bannerModal">添加
     </button>
-    <button class="btn btn-warning" id="edit"><span class="glyphicon glyphicon-edit"></span> 修改</button>
-    <button class="btn btn-danger" id="del">删除</button>
 </div>
     <script>
     // 修改函数

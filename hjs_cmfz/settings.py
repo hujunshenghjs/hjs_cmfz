@@ -121,9 +121,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), os.path.join(BASE_DIR, 'media')]
-MEDIA_ROOT = [os.path.join(BASE_DIR, 'media')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/'), os.path.join(BASE_DIR, 'media/')]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
 APIKEY = "40d6180426417bfc57d0744a362dc108"
 # APIKEY = "22cde034573b83d38c8541908c501bdc"
-# APIKEY = "22cde034573b83d38c8541908c501bdc"
-# APPEND_SLASH=False

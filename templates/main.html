@@ -39,7 +39,22 @@
             <!--折叠部分-->
             <div class="panel-heading">
                 <div class="panel-title">
-                    <a href="#" data-toggle="collapse" data-parent="#accordion"><h4>用户管理</h4></a>
+                    <a href="#bb" data-toggle="collapse" data-parent="#accordion"><h4>用户管理</h4></a>
+                </div>
+            </div>
+            <div id="bb" class="panel-collapse collapse ">
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="Javascript:$('#myCarousel').load('{% static "static_html/user_list.html" %}')">用户列表</a>
+                        </li>
+                        <li><a style="font-weight: bold;"
+                               href="javascript:$('#myCarousel').load('{% static "static_html/echarts.html" %}')">用户注册趋势</a>
+                        </li>
+{#                        <li><a style="font-weight: bold;"#}
+{#                               href="javascript:$('#myCarousel').load('{% static "static_html/banner2.html" %}')">用户地区分布</a>#}
+{#                        </li>#}
+                    </ul>
                 </div>
             </div>
         </div>

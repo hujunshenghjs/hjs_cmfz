@@ -37,7 +37,7 @@ def get_all_banner(request):
                     }
 
     data = json.dumps(page_data, default=myDefault)
-    print(data)
+    # print(data)
     return HttpResponse(data)
 
 
@@ -46,14 +46,15 @@ def add_banner(request):
     title = request.POST.get("title")
     status = request.POST.get('status')
     picture = request.FILES.get('pic')
-    print(title, status, picture, "111111")
-    try:
-        result = Banner.objects.create(picture_title=title, picture_status=str(status), picture_url=picture)
-        if result:
-            return HttpResponse('添加成功！')
-    except BaseException as error :
-        print(error)
-        return HttpResponse('添加失败！')
+    # print(title, status, picture, "111111")
+    # try:
+    Banner.objects.create(picture_title=title, picture_status=str(status), picture_url=picture)
+
+    # if result:
+    return HttpResponse('添加成功！')
+# except BaseException as error:
+#     print(error, "2222")
+#     return HttpResponse('添加失败！')
 
 
 @csrf_exempt
@@ -63,9 +64,9 @@ def edit_banner(request):
         id = request.POST.get('id')
         title = request.POST.get('desc')
         status = request.POST.get('status')
-        print(id,status,title)
+        print(id, status, title)
         pic = Banner.objects.get(pk=id)
-        pic.picture_title= title
+        pic.picture_title = title
         pic.picture_status = status
         pic.save()
         return HttpResponse('修改成功')
