@@ -31,7 +31,7 @@ def get_all_banner(request):
         if isinstance(b, Banner):
             return {"id": b.pk,
                     "desc": b.picture_title,
-                    "status": '展示' if b.picture_status == 1 else '不展示',
+                    "status": 'True' if b.picture_status == 1 else 'False',
                     "pic": str(b.picture_url),
                     "date": b.create_time.strftime("%Y-%m-%d %H:%M:%S"),
                     }
@@ -60,7 +60,10 @@ def add_banner(request):
 @csrf_exempt
 def edit_banner(request):
     method = request.POST.get("oper")
+    print(method)
+    print(type(method))
     if method == 'edit':
+        print("111")
         id = request.POST.get('id')
         title = request.POST.get('desc')
         status = request.POST.get('status')

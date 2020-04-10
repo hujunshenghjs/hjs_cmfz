@@ -14,9 +14,9 @@
             colNames: ["ID", "描述", "上传时间", "是否显示", "图片", "操作"],
             colModel: [
                 {name: "id"},
-                {name: "desc"},
+                {name: "desc", editable: true},
                 {name: "date"},
-                {name: "status"},
+                {name: "status", editable: true},
                 {       // 获取图片保存在数据库的路径
                     name: "pic", formatter: function (cellvalue, options, row) {
                     console.log(cellvalue);
@@ -25,8 +25,8 @@
                 {
                     name: 'option', align: 'center', width: 439,
                     formatter: function (cellValue, options, row) {
-                        return"<button class=\"btn btn-warning\" id=\"edit\" onclick=\"edit(" + row.id + ")\"><span class=\"glyphicon glyphicon-edit\"></span> 修改</button> " +
-                            "<button class=\"btn btn-danger\" id=\"edit\" onclick=\"del(" + row.id + ")\"><span class=\"glyphicon glyphicon-edit\"></span> 删除</button>"
+                        return"<button class=\"btn btn-warning\" id=\"edit1\" onclick=\"edit(" + row.id +")\"><span class=\"glyphicon glyphicon-edit\"></span> 修改</button> " +
+                            "<button class=\"btn btn-danger\" id=\"edit2\" onclick=\"del(" + row.id + ")\"><span class=\"glyphicon glyphicon-edit\"></span> 删除</button>"
                     },
                 }
             ],
@@ -91,7 +91,8 @@
     <script>
     // 修改函数
     function edit(id) {
-        $("#bannerTable").jqGrid("editGridRow", id, {
+        console.log("123123");
+        $("#bannerTable").jqGrid("editGridRow", id,{
             height: 300,
             reloadAfterSubmit: true
         })

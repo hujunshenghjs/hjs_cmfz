@@ -1,0 +1,53 @@
+<body>
+<button onclick="show()">show</button>
+<div id="main" style="width: 800px;height:500px;"></div>
+<script type="text/javascript">
+    function show() {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '最近七天新增用户数'
+            },
+            tooltip: {},
+            legend: {
+                data: ['注册人数']
+            },
+            xAxis: {
+                data: []
+            },
+            yAxis: {},
+
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        // 发送Ajax请求获取数据
+        $.ajax({
+            url: '/user/user_register_trend',
+            datatype: 'json',
+            type: 'get',
+            success: function (data) {
+                myChart.setOption({
+                    xAxis: {
+                        data: data.x
+                    },
+                    series: [{
+                        name: '注册人数',
+                        data: data.y,
+                        type: 'line',
+                        color: 'black',
+                        areaStyle: {},
+                        smooth: true
+                    }]
+                })
+            }
+        })
+
+    }
+
+</script>
+</body>
