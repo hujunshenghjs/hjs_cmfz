@@ -12,6 +12,8 @@
     <script src="{% static 'boot/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'jqgrid/js/trirand/src/jquery.jqGrid.js' %}"></script>
     <script src="{% static 'jqgrid/js/trirand/i18n/grid.locale-cn.js' %}"></script>
+    <script src="{% static 'echarts/echarts.min.js' %}"></script>
+    <script src="{% static 'echarts/china.js' %}"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -49,7 +51,7 @@
                             <a href="Javascript:$('#myCarousel').load('{% static "static_html/user_list.html" %}')">用户列表</a>
                         </li>
                         <li><a style="font-weight: bold;"
-                               href="javascript:$('#myCarousel').load('{% static "static_html/user_distribution.html" %}')">用户注册趋势</a>
+                               href="javascript:$('#myCarousel').load('{% static "static_html/register.html" %}')">用户注册趋势</a>
                         </li>
                         <li><a style="font-weight: bold;"
                                href="javascript:$('#myCarousel').load('{% static "static_html/user_register_trend.html" %}')">用户地区分布</a>
