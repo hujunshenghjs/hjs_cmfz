@@ -227,11 +227,11 @@
         extend: _extend,
         json: _json
     };
-    var _INLINE_TAG_MAP = _toMap('a,abbr,acronym,b,basefont,bdo,big,br,button,cite,code,del,dfn,em,font,i,pictures,input,ins,kbd,label,map,q,s,samp,select,small,span,strike,strong,sub,sup,textarea,tt,u,var'),
+    var _INLINE_TAG_MAP = _toMap('a,abbr,acronym,b,basefont,bdo,big,br,button,cite,code,del,dfn,em,font,i,img,input,ins,kbd,label,map,q,s,samp,select,small,span,strike,strong,sub,sup,textarea,tt,u,var'),
         _BLOCK_TAG_MAP = _toMap('address,applet,blockquote,body,center,dd,dir,div,dl,dt,fieldset,form,frameset,h1,h2,h3,h4,h5,h6,head,hr,html,iframe,ins,isindex,li,map,menu,meta,noframes,noscript,object,ol,p,pre,script,style,table,tbody,td,tfoot,th,thead,title,tr,ul'),
-        _SINGLE_TAG_MAP = _toMap('area,base,basefont,br,col,frame,hr,pictures,input,isindex,link,meta,param,embed'),
+        _SINGLE_TAG_MAP = _toMap('area,base,basefont,br,col,frame,hr,img,input,isindex,link,meta,param,embed'),
         _STYLE_TAG_MAP = _toMap('b,basefont,big,del,em,font,i,s,small,span,strike,strong,sub,sup,u'),
-        _CONTROL_TAG_MAP = _toMap('pictures,table,input,textarea,button'),
+        _CONTROL_TAG_MAP = _toMap('img,table,input,textarea,button'),
         _PRE_TAG_MAP = _toMap('pre,style,script'),
         _NOSPLIT_TAG_MAP = _toMap('html,head,body,td,tr,table,ol,ul,li'),
         _AUTOCLOSE_TAG_MAP = _toMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr'),
@@ -1019,7 +1019,7 @@
         } else if (height > 0) {
             style += 'height:' + height + 'px;';
         }
-        var html = '<pictures class="' + _mediaClass(type) + '" src="' + blankPath + '" ';
+        var html = '<img class="' + _mediaClass(type) + '" src="' + blankPath + '" ';
         if (style !== '') {
             html += 'style="' + style + '" ';
         }
@@ -1313,7 +1313,7 @@
         }
         var doc = _getDoc(el);
         try {
-            el.innerHTML = '<pictures id="__kindeditor_temp_tag__" width="0" height="0" style="display:none;" />' + html;
+            el.innerHTML = '<img id="__kindeditor_temp_tag__" width="0" height="0" style="display:none;" />' + html;
             var temp = doc.getElementById('__kindeditor_temp_tag__');
             temp.parentNode.removeChild(temp);
         } catch (e) {
@@ -1877,7 +1877,7 @@
             if (expr.length !== length || /<.+>/.test(expr)) {
                 var doc = root ? root.ownerDocument || root : document,
                     div = doc.createElement('div'), list = [];
-                div.innerHTML = '<pictures id="__kindeditor_temp_tag__" width="0" height="0" style="display:none;" />' + expr;
+                div.innerHTML = '<img id="__kindeditor_temp_tag__" width="0" height="0" style="display:none;" />' + expr;
                 for (var i = 0, len = div.childNodes.length; i < len; i++) {
                     var child = div.childNodes[i];
                     if (child.id == '__kindeditor_temp_tag__') {
@@ -3313,7 +3313,7 @@
             }
 
             function pasteHtml(range, val) {
-                val = '<pictures id="__kindeditor_temp_tag__" width="0" height="0" style="display:none;" />' + val;
+                val = '<img id="__kindeditor_temp_tag__" width="0" height="0" style="display:none;" />' + val;
                 var rng = range.get();
                 if (rng.item) {
                     rng.item(0).outerHTML = val;
@@ -3361,7 +3361,7 @@
         insertimage: function (url, title, width, height, border, align) {
             title = _undef(title, '');
             border = _undef(border, 0);
-            var html = '<pictures src="' + _escape(url) + '" data-ke-src="' + _escape(url) + '" ';
+            var html = '<img src="' + _escape(url) + '" data-ke-src="' + _escape(url) + '" ';
             if (width) {
                 html += 'width="' + _escape(width) + '" ';
             }
@@ -3736,7 +3736,7 @@
             'body, p, div {word-wrap: break-word;}',
             'p {margin:5px 0;}',
             'table {border-collapse:collapse;}',
-            'pictures {border:0;}',
+            'img {border:0;}',
             'noscript {display:none;}',
             'table.ke-zeroborder td {border:1px dotted #AAA;}',
             'img.ke-flash {',
@@ -6240,7 +6240,7 @@
                     if (attrs.href !== undefined) {
                         return full;
                     }
-                    return '<pictures class="ke-anchor" src="' + self.themesPath + 'common/anchor.gif" data-ke-name="' + escape(attrs.name) + '" />';
+                    return '<img class="ke-anchor" src="' + self.themesPath + 'common/anchor.gif" data-ke-name="' + escape(attrs.name) + '" />';
                 })
                 .replace(/<script([^>]*)>([\s\S]*?)<\/script>/ig, function (full, attr, code) {
                     return '<div class="ke-script" data-ke-script-attr="' + escape(attr) + '">' + escape(code) + '</div>';
@@ -6946,7 +6946,7 @@ KindEditor.plugin('emoticons', function (K) {
         var previewDiv, previewImg;
         if (allowPreview) {
             previewDiv = K('<div class="ke-preview"></div>').css('right', 0);
-            previewImg = K('<pictures class="ke-preview-pictures" src="' + path + startNum + '.gif" />');
+            previewImg = K('<img class="ke-preview-img" src="' + path + startNum + '.gif" />');
             wrapperDiv.append(previewDiv);
             previewDiv.append(previewImg);
         }
@@ -6973,7 +6973,7 @@ KindEditor.plugin('emoticons', function (K) {
                 K(this).removeClass('ke-on');
             });
             cell.click(function (e) {
-                self.insertHtml('<pictures src="' + path + num + '.gif" border="0" alt="" />').hideMenu().focus();
+                self.insertHtml('<img src="' + path + num + '.gif" border="0" alt="" />').hideMenu().focus();
                 e.stop();
             });
         }
@@ -7001,7 +7001,7 @@ KindEditor.plugin('emoticons', function (K) {
                     var cell = K(row.insertCell(j));
                     cell.addClass('ke-cell');
                     bindCellEvent(cell, j, num);
-                    var span = K('<span class="ke-pictures"></span>')
+                    var span = K('<span class="ke-img"></span>')
                         .css('background-position', '-' + (24 * num) + 'px 0px')
                         .css('background-image', 'url(' + path + 'static.gif)');
                     cell.append(span);
@@ -7090,7 +7090,7 @@ KindEditor.plugin('filemanager', function (K) {
             '<div style="padding:10px 20px;">',
             '<div class="ke-plugin-filemanager-header">',
             '<div class="ke-left">',
-            '<pictures class="ke-inline-block" name="moveupImg" src="' + imgPath + 'go-up.gif" width="16" height="16" border="0" alt="" /> ',
+            '<img class="ke-inline-block" name="moveupImg" src="' + imgPath + 'go-up.gif" width="16" height="16" border="0" alt="" /> ',
             '<a class="ke-inline-block" name="moveupLink" href="javascript:;">' + lang.moveup + '</a>',
             '</div>',
             '<div class="ke-right">',
@@ -7198,7 +7198,7 @@ KindEditor.plugin('filemanager', function (K) {
                         K(this).removeClass('ke-on');
                     });
                 var iconUrl = imgPath + (data.is_dir ? 'folder-16.gif' : 'file-16.gif'),
-                    img = K('<pictures src="' + iconUrl + '" width="16" height="16" alt="' + data.filename + '" align="absmiddle" />'),
+                    img = K('<img src="' + iconUrl + '" width="16" height="16" alt="' + data.filename + '" align="absmiddle" />'),
                     cell0 = K(row[0].insertCell(0)).addClass('ke-cell ke-name').append(img).append(document.createTextNode(' ' + data.filename));
                 if (!data.is_dir || data.has_file) {
                     row.css('cursor', 'pointer');
@@ -7229,7 +7229,7 @@ KindEditor.plugin('filemanager', function (K) {
                 div.append(photoDiv);
                 var fileUrl = result.current_url + data.filename,
                     iconUrl = data.is_dir ? imgPath + 'folder-64.gif' : (data.is_photo ? fileUrl : imgPath + 'file-64.gif');
-                var img = K('<pictures src="' + iconUrl + '" width="80" height="80" alt="' + data.filename + '" />');
+                var img = K('<img src="' + iconUrl + '" width="80" height="80" alt="' + data.filename + '" />');
                 if (!data.is_dir || data.has_file) {
                     photoDiv.css('cursor', 'pointer');
                     bindTitle(photoDiv, data);
@@ -7453,13 +7453,13 @@ KindEditor.plugin('image', function (K) {
             '<label for="remoteWidth" style="width:60px;">' + lang.size + '</label>',
             lang.width + ' <input type="text" id="remoteWidth" class="ke-input-text ke-input-number" name="width" value="" maxlength="4" /> ',
             lang.height + ' <input type="text" class="ke-input-text ke-input-number" name="height" value="" maxlength="4" /> ',
-            '<pictures class="ke-refresh-btn" src="' + imgPath + 'refresh.png" width="16" height="16" alt="" style="cursor:pointer;" title="' + lang.resetSize + '" />',
+            '<img class="ke-refresh-btn" src="' + imgPath + 'refresh.png" width="16" height="16" alt="" style="cursor:pointer;" title="' + lang.resetSize + '" />',
             '</div>',
             '<div class="ke-dialog-row">',
             '<label style="width:60px;">' + lang.align + '</label>',
-            '<input type="radio" name="align" class="ke-inline-block" value="" checked="checked" /> <pictures name="defaultImg" src="' + imgPath + 'align_top.gif" width="23" height="25" alt="" />',
-            ' <input type="radio" name="align" class="ke-inline-block" value="left" /> <pictures name="leftImg" src="' + imgPath + 'align_left.gif" width="23" height="25" alt="" />',
-            ' <input type="radio" name="align" class="ke-inline-block" value="right" /> <pictures name="rightImg" src="' + imgPath + 'align_right.gif" width="23" height="25" alt="" />',
+            '<input type="radio" name="align" class="ke-inline-block" value="" checked="checked" /> <img name="defaultImg" src="' + imgPath + 'align_top.gif" width="23" height="25" alt="" />',
+            ' <input type="radio" name="align" class="ke-inline-block" value="left" /> <img name="leftImg" src="' + imgPath + 'align_left.gif" width="23" height="25" alt="" />',
+            ' <input type="radio" name="align" class="ke-inline-block" value="right" /> <img name="rightImg" src="' + imgPath + 'align_right.gif" width="23" height="25" alt="" />',
             '</div>',
             '<div class="ke-dialog-row">',
             '<label for="remoteTitle" style="width:60px;">' + lang.imgTitle + '</label>',
@@ -7635,7 +7635,7 @@ KindEditor.plugin('image', function (K) {
         }
 
         refreshBtn.click(function (e) {
-            var tempImg = K('<pictures src="' + urlBox.val() + '" />', document).css({
+            var tempImg = K('<img src="' + urlBox.val() + '" />', document).css({
                 position: 'absolute',
                 visibility: 'hidden',
                 top: 0,
@@ -8225,7 +8225,7 @@ KindEditor.plugin('media', function (K) {
                         return;
                     }
                     file.url = data.url;
-                    K('.ke-pictures', itemDiv).attr('src', file.url).attr('data-status', file.filestatus).data('data', data);
+                    K('.ke-img', itemDiv).attr('src', file.url).attr('data-status', file.filestatus).data('data', data);
                     K('.ke-status > div', itemDiv).hide();
                 }
             };
@@ -8236,7 +8236,7 @@ KindEditor.plugin('media', function (K) {
         },
         getUrlList: function () {
             var list = [];
-            K('.ke-pictures', self.bodyDiv).each(function () {
+            K('.ke-img', self.bodyDiv).each(function () {
                 var img = K(this);
                 var status = img.attr('data-status');
                 if (status == SWFUpload.FILE_STATUS.COMPLETE) {
@@ -8271,7 +8271,7 @@ KindEditor.plugin('media', function (K) {
                     K(this).removeClass('ke-on');
                 });
             itemDiv.append(photoDiv);
-            var img = K('<pictures src="' + file.url + '" class="ke-pictures" data-status="' + file.filestatus + '" width="80" height="80" alt="' + file.name + '" />');
+            var img = K('<img src="' + file.url + '" class="ke-img" data-status="' + file.filestatus + '" width="80" height="80" alt="' + file.name + '" />');
             photoDiv.append(img);
             K('<span class="ke-delete"></span>').appendTo(photoDiv).click(function () {
                 self.removeFile(file.id);

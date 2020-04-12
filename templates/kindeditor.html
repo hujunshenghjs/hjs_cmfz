@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'kindeditor/kindeditor-all-min.js' %}"></script>
+    <script src="{% static 'kindeditor/lang/zh-CN.js' %}"></script>
+    <script>
+        KindEditor.ready(function (K) {
+            K.create('#editor_id',{
+                width: "800px",
+                height: "400px",
+                resizeType: 0,
+                uploadJson: "/article/upload/",
+                allowFileManager: true,     // 显示图片空间的按钮
+                fileManagerJson: "/article/get_all_img/",
+            });
+        });
+    </script>
+</head>
+<body>
+
+<textarea id="editor_id" name="content" style="width:700px;height:300px;">
+
+</textarea>
+
+</body>
+</html>

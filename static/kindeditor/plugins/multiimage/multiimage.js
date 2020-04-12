@@ -115,7 +115,7 @@
                         return;
                     }
                     file.url = data.url;
-                    K('.ke-pictures', itemDiv).attr('src', file.url).attr('data-status', file.filestatus).data('data', data);
+                    K('.ke-img', itemDiv).attr('src', file.url).attr('data-status', file.filestatus).data('data', data);
                     K('.ke-status > div', itemDiv).hide();
                 }
             };
@@ -127,7 +127,7 @@
         },
         getUrlList: function () {
             var list = [];
-            K('.ke-pictures', self.bodyDiv).each(function () {
+            K('.ke-img', self.bodyDiv).each(function () {
                 var img = K(this);
                 var status = img.attr('data-status');
                 if (status == SWFUpload.FILE_STATUS.COMPLETE) {
@@ -163,7 +163,7 @@
                 });
             itemDiv.append(photoDiv);
 
-            var img = K('<pictures src="' + file.url + '" class="ke-pictures" data-status="' + file.filestatus + '" width="80" height="80" alt="' + file.name + '" />');
+            var img = K('<img src="' + file.url + '" class="ke-img" data-status="' + file.filestatus + '" width="80" height="80" alt="' + file.name + '" />');
             photoDiv.append(img);
             K('<span class="ke-delete"></span>').appendTo(photoDiv).click(function () {
                 self.removeFile(file.id);

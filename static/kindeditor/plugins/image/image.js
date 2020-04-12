@@ -55,14 +55,14 @@ KindEditor.plugin('image', function (K) {
             '<label for="remoteWidth" style="width:60px;">' + lang.size + '</label>',
             lang.width + ' <input type="text" id="remoteWidth" class="ke-input-text ke-input-number" name="width" value="" maxlength="4" /> ',
             lang.height + ' <input type="text" class="ke-input-text ke-input-number" name="height" value="" maxlength="4" /> ',
-            '<pictures class="ke-refresh-btn" src="' + imgPath + 'refresh.png" width="16" height="16" alt="" style="cursor:pointer;" title="' + lang.resetSize + '" />',
+            '<img class="ke-refresh-btn" src="' + imgPath + 'refresh.png" width="16" height="16" alt="" style="cursor:pointer;" title="' + lang.resetSize + '" />',
             '</div>',
             //align
             '<div class="ke-dialog-row">',
             '<label style="width:60px;">' + lang.align + '</label>',
-            '<input type="radio" name="align" class="ke-inline-block" value="" checked="checked" /> <pictures name="defaultImg" src="' + imgPath + 'align_top.gif" width="23" height="25" alt="" />',
-            ' <input type="radio" name="align" class="ke-inline-block" value="left" /> <pictures name="leftImg" src="' + imgPath + 'align_left.gif" width="23" height="25" alt="" />',
-            ' <input type="radio" name="align" class="ke-inline-block" value="right" /> <pictures name="rightImg" src="' + imgPath + 'align_right.gif" width="23" height="25" alt="" />',
+            '<input type="radio" name="align" class="ke-inline-block" value="" checked="checked" /> <img name="defaultImg" src="' + imgPath + 'align_top.gif" width="23" height="25" alt="" />',
+            ' <input type="radio" name="align" class="ke-inline-block" value="left" /> <img name="leftImg" src="' + imgPath + 'align_left.gif" width="23" height="25" alt="" />',
+            ' <input type="radio" name="align" class="ke-inline-block" value="right" /> <img name="rightImg" src="' + imgPath + 'align_right.gif" width="23" height="25" alt="" />',
             '</div>',
             //title
             '<div class="ke-dialog-row">',
@@ -249,7 +249,7 @@ KindEditor.plugin('image', function (K) {
         }
 
         refreshBtn.click(function (e) {
-            var tempImg = K('<pictures src="' + urlBox.val() + '" />', document).css({
+            var tempImg = K('<img src="' + urlBox.val() + '" />', document).css({
                 position: 'absolute',
                 visibility: 'hidden',
                 top: 0,

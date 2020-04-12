@@ -71,12 +71,12 @@ KindEditor.plugin('quickformat', function (K) {
 
  --------------------------
 
- &nbsp; abcd<pictures>1233
+ &nbsp; abcd<img>1233
  <p>1234</p>
 
  to
 
- <p style="text-indent:2em;">abcd<pictures>1233</p>
+ <p style="text-indent:2em;">abcd<img>1233</p>
  <p style="text-indent:2em;">1234</p>
 
  --------------------------
