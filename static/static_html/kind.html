@@ -1,0 +1,102 @@
+<script>
+    $(function () {
+        $("#articleTable").jqGrid({
+            url: "/article/getALLArticle/",
+            editurl: "/article/editArticle",
+            datatype: "json",
+            styleUI: "Bootstrap",
+            autowidth: true,
+            height: 500,
+            pager: "#articlePager",
+            rowNum: 5,
+            rowList: [5, 10, 15],
+            viewrecords: true,
+            rownumbers: true,
+            multiselect: true,
+            colNames: ["编号", "内容", "标题", "状态", "上传时间", "发布时间", "操作"],
+            colModel: [
+                {name: "id", hidden: true,},
+                {name: "content", hidden: true,},
+                {name: "title",},
+                {name: "status",},
+                {name: "createDate",},
+                {name: "publishDate",},
+                {
+                    name: "option",
+                    formatter: function (cellvalue, options, rowObject) {//JSON.stringify(rowObject).replace(/"/g, '&quot;
+                        var result = '';
+                        result += "<a href='javascript:void(0)' onclick=\"editModel('" + rowObject.id + "')\" class='btn btn-lg' title='查看详情'> <span class='glyphicon glyphicon-th-list'>编辑</span></a>" +
+                            "<a href='javascript:void(0)' onclick=\"delModel('" + rowObject.id + "')\" class='btn btn-lg' title='删除'> <span class='glyphicon glyphicon-king'>删除</span></a>";
+                        return result;
+                    }
+                },
+            ],
+        }).jqGrid("navGrid", "#articlePager", {add: false, edit: false}, {deltext: "删除"});
+    });
+
+    // 触发添加文章的模态框
+    function showAddArticle() {
+        $('#myModal').modal('show');
+        KindEditor.create("#editor_id", {
+            allowFileManager: true,
+            uploadJson: "/article/upload/",
+            fileManagerJson: "/article/get_all_img/",
+            resizeType: 1,
+            // 提交文章内容时必须将富文本框的值同步到 textarea中 否则后台无法获取值
+            afterBlur: function () {
+                this.sync()
+            }
+        });
+        $("#modal_footer").html('<button type="button" class="btn btn-primary" onclick="addArticle()">保存</button> ' +
+            '<button class="btn btn-warning" data-dismiss="modal">取消</button>')
+    }
+
+    // 点击保存按钮  进行文章的保存
+    function addArticle() {
+        $.ajax({
+            url: "/article/add_article/",
+            type: 'get',
+            datatype: 'json',
+            data: $("#addArticleFrom").serialize(),
+            success: function (data) {
+                // 根据返回值做对应的处理  例如：刷新表格  关闭模态框
+            }
+        })
+    }
+
+    // 编辑文章的方法
+    function editModel(id) {
+        // 获取当前行的值
+        let data = $("#articleTable").jqGrid("getRowData", id);
+        // 进行值得回显
+        $("#title").val(data.title);
+        KindEditor.html("#editor_id", data.content);
+
+        $("#myModal").modal("show");
+        KindEditor.create("#editor_id", {
+            allowFileManager: true,
+            uploadJson: "/article/upload/",
+            fileManagerJson: "/article/get_all_img/",
+            resizeType: 1,
+            // 提交文章内容时必须将富文本框的值同步到 textarea中 否则后台无法获取值
+            afterBlur: function () {
+                this.sync()
+            }
+        });
+    }
+
+
+</script>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#" style="font-weight: bold">文章信息</a></li>
+    <li><a style="font-weight: bold" onclick="showAddArticle();">添加文章</a></li>
+    <div class="input-group" style="float: right;width: 30%">
+        <input type="text" id="esContent" class="form-control" placeholder="请输入搜索内容" aria-describedby="basic-addon2">
+        <span class="input-group-addon" id="basic-addon2"><a href="javascript:void(0)" id="searchES">点击搜索</a></span>
+    </div>
+</ul>
+<div class="panel panel-default">
+    <table id="articleTable"></table>
+    <div id="articlePager" style="width: auto;height: 50px"></div>
+</div>

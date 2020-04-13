@@ -14,6 +14,8 @@
     <script src="{% static 'jqgrid/js/trirand/i18n/grid.locale-cn.js' %}"></script>
     <script src="{% static 'echarts/echarts.min.js' %}"></script>
     <script src="{% static 'echarts/china.js' %}"></script>
+    <script src="{% static 'kindeditor/kindeditor-all-min.js' %}"></script>
+    <script src="{% static 'kindeditor/lang/zh-CN.js' %}"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -65,7 +67,16 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="panel-title">
-                    <a href="#" data-toggle="collapse" data-parent="#accordion"><h4>文章管理</h4></a>
+                    <a href="#dds" data-toggle="collapse" data-parent="#accordion"><h4>文章管理</h4></a>
+                </div>
+            </div>
+            <div id="dds" class="panel-collapse collapse ">
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="Javascript:$('#myCarousel').load('{% static "static_html/kind.html" %}')">文章列表</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -136,6 +147,54 @@
 <div class="panel-footer">
     <div class="panel-title">
         <h5 style="text-align: center">@百知教育 baizhi@zparkhr.com.cn</h5>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:750px">
+            <!--模态框标题-->
+            <div class="modal-header">
+                <!--
+                    用来关闭模态框的属性:data-dismiss="modal"
+                -->
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">编辑用户信息</h4>
+            </div>
+
+            <!--模态框内容体-->
+            <div class="modal-body">
+                <form action="//" class="form-horizontal"
+                      id="addArticleFrom">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">标题</label>
+                        <div class="col-sm-5">
+                            <input type="text" name="title" id="title" placeholder="请输入标题" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">分类</label>
+                        <div class="col-sm-5">
+                            <select class="form-control" name="category" id="status">
+                                <option value="1">上师言教</option>
+                                <option value="2">显密法要</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <textarea id="editor_id" name="content" style="width:700px;height:300px;">
+
+                            </textarea>
+                        </div>
+                    </div>
+                    <input id="addInsertImg" name="insertImg" hidden>
+                </form>
+            </div>
+            <!--模态页脚-->
+            <div class="modal-footer" id="modal_footer">
+
+            </div>
+        </div>
     </div>
 </div>
 </body>

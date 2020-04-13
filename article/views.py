@@ -39,6 +39,7 @@ def upload_img(request):
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 
+
 def get_all_img(request):
     """
     获取所有图片的方法
@@ -46,7 +47,7 @@ def get_all_img(request):
     :return:
     """
     # 找到图片所在的目录  方便进行回显
-    pic_dir = request.scheme + "://" + request.get_host() + '/'
+    pic_dir = request.scheme + "://" + request.get_host() + '/static/'
     print(pic_dir, "11111111111111")
     pic_list = Pic.objects.all()
 

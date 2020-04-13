@@ -1,10 +1,18 @@
 from django.db import models
 
+
 # Create your models here.
 
 
+class Pic(models.Model):
+    img = models.ImageField(upload_to='img')
+
+    class Meta:
+        db_table = 't_pic'
+
+
 class Article(models.Model):
-    id = models.CharField(primary_key=True, max_length=40)
+    id = models.CharField(primary_key=True, max_length=50)
     title = models.CharField(max_length=255, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
     create_date = models.DateField(blank=True, null=True)
@@ -15,11 +23,4 @@ class Article(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'article'
-
-
-class Pic(models.Model):
-    img = models.ImageField(upload_to='img')
-
-    class Meta:
-        db_table = 't_pic'
+        db_table = 't_article'
