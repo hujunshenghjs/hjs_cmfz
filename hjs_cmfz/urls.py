@@ -22,4 +22,6 @@ urlpatterns = [
     path('banner/', include("banner.urls")),
     path('user/', include("user.urls")),
     path('article/', include("article.urls")),
+    path('api/', include("api.urls")),
+    path('rabc/', include("rabc.urls")),
 ]

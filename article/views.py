@@ -39,7 +39,6 @@ def upload_img(request):
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 
-
 def get_all_img(request):
     """
     获取所有图片的方法
@@ -48,7 +47,7 @@ def get_all_img(request):
     """
     # 找到图片所在的目录  方便进行回显
     pic_dir = request.scheme + "://" + request.get_host() + '/static/'
-    print(pic_dir, "11111111111111")
+    print(pic_dir, "123")
     pic_list = Pic.objects.all()
 
     rows = []
@@ -89,8 +88,70 @@ def add_article(request):
     category = request.GET.get('category')
     title = request.GET.get('title')
     content = request.GET.get('content')
-    print(category, title, content)
+    status = request.GET.get('status')
+    file = request.FILES.get("imgFile")
+    print(category, title, content, status)
 
     # 可以根据获取到的值进行保存
+    Article.objects.create(title=title, content=content, status=status, create_date="2019-07-17", publish_date="2019-07-17", new_img=file)
 
-    return HttpResponse()
+    return JsonResponse({'status': 1, 'msg': f'添加成功！'})
+
+def get_all_article(request):
+    page_num = request.GET.get('page')
+    row_num = request.GET.get('rows')
+
+    rows = []
+    article = Article.objects.all().order_by('id')
+    all_page = Paginator(article, row_num)
+    page = Paginator(article, row_num).page(page_num).object_list
+
+    page_data = {
+        "total": all_page.num_pages,
+        "records": all_page.count,
+        "page": page_num,
+        "rows": rows
+    }
+
+    for i in page:
+        rows.append(i)
+
+    def myDefault(u):
+        if isinstance(u, Article):
+            return {'id': u.id,
+                    'content': u.content,
+                    'title': u.title,
+                    'category': u.guru_id,
+                    'status': u.status == 1,
+                    'publish_date': u.publish_date.strftime('%Y-%m-%d %H:%M:%S'),
+                    }
+
+    data = json.dumps(page_data, default=myDefault)
+
+    return HttpResponse(data)
+
+@csrf_exempt
+def edit_article(request):
+    method = request.POST.get("oper")
+    print(method)
+    if method == 'del':
+        id = request.POST.get('id')
+        Article.objects.get(id=id).delete()
+        return JsonResponse({'status': 1, 'msg': f'删除成功！'})
+    else:
+        id = request.POST.get('id')
+        category = request.POST.get('category')
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        status = request.POST.get('status')
+        print(content, id, category, title, status)
+        try:
+            article = Article.objects.get(id=id)
+            article.article_category = category
+            article.title = title
+            article.content = content
+            article.status = status
+            article.save()
+            return JsonResponse({'status': 1, 'msg': f'修改成功！'})
+        except BaseException as error:
+            return JsonResponse({'status': 0, 'msg': f'添加失败:{error}'})

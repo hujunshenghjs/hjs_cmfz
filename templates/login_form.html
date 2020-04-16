@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>持名法州后台管理系统登陆</title>
+    <link rel="stylesheet" href="{% static 'boot/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'jqgrid/css/trirand/ui.jqgrid-bootstrap.css' %}">
+    <script src="{% static 'boot/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'boot/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<br><br><br>
+<div class="container">
+    <div class="form-group">
+        <div class="col-lg-10">
+            <form id="loginForm" role="form" action="{% url 'rbac:check_user' %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <label for="mobile" class="">用户名:</label>
+                <div class="input-group m-bot15" style="width: 300px">
+                    <input type="text" class="form-control" required id="username" name="username">
+
+                </div>
+                <br>
+                <label for="basic-url" class="">密码：</label>
+                <div class="input-group" style="width: 300px">
+                    <input type="password" class="form-control" required id="password" name="password">
+                </div>
+                <br>
+                <div class="input-group">
+                    <button type="submit" class="btn btn-success" id="loginButtonId" value="登录" onclick="check_username()">登陆</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function check_username() {
+        $.ajax({
+            type: "POST",
+            url: "{% url "rbac:check_user" %}",
+            data: $("#loginForm").serialize(),
+            success: function (data) {
+                if (data.status === 1) {
+                    location.href = '{% url 'home_index' %}'
+                } else {
+                    alert(data.msg);
+                    location.reload()
+                }
+            }
+        });
+
+    }
+</script>
+</body>
+</html>

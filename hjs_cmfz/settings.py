@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'banner',
     'user',
     'article',
+    'album',
+    'api',
+    'rabc',
 ]
 
 MIDDLEWARE = [
